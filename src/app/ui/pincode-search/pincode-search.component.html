@@ -1,0 +1,60 @@
+<div class="row pt-5">
+    <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+            <div class="card-header">
+                <h6 class="mb-0 text-center">Fetch Center by Pincode</h6>
+            </div>
+            <div class="card-body text-center">
+                <form class="form" (ngSubmit)="onSubmit()">
+                    <div class="form-group ">
+                        <label for="">Pincode</label>
+                        <input type="text" name="pin" id="pin" [(ngModel)]="pin" class="form-control"
+                            placeholder="PinCode" required autofocus>
+                        <!-- <p ciError>{{errorMessage}}</p> -->
+                    </div>
+                    <div class="row">&nbsp;</div>
+                    <div class="text-center">
+                        <button class="btn  btn-success " type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card" *ngIf="vaccineDetails">
+    <div class="text-center" *ngIf="showLoader">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Center ID</th>  
+                <th>Center Name</th>
+                <th>Address</th>
+                <th>Type</th>  
+                <th>Pincode</th>  
+                <th>Vaccine Name</th>
+                <th>Total Quantity</th> 
+                <th>Dose 1 Quantity</th>
+                <th>Dose 2 Quantity</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let a of vaccineDetails">
+                <th>{{a.center_id}}</th>
+                <td>{{a.name}}</td>
+                <td>{{a.address}}</td>
+                <td>{{a.fee_type}}</td>
+                <td>{{a.pincode}}</td>
+                <td>{{a.vaccine}}</td>
+                <td>{{a.available_capacity}}</td>
+                <td>{{a.available_capacity_dose1}}</td>
+                <td>{{a.available_capacity_dose2}}</td>
+            </tr>
+        </tbody>
+    </table>
+      
+</div>

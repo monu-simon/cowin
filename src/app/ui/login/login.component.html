@@ -1,0 +1,37 @@
+<!-- <body class="text-center">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <div class="form-group">
+            <label for="inputEmail" class="sr-only">Mobile Number</label>
+            <input type="text"  name="no" id="inputEmail" ngModel class="form-control" placeholder="Mobile Number" required autofocus><br>
+            <button class="btn btn-lg btn-success btn-block" type="submit">Get OTP</button>
+        </div>        
+    </form>
+</body>  -->
+<!-- Default form login -->
+
+<div class="row pt-5">
+    <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+            <div class="card-header">
+                <h6 class="mb-0 text-center">Get OTP</h6>
+            </div>
+            <div class="card-body text-center">
+                <form class="form" (ngSubmit)="onSubmit()">
+                    <div class="form-group ">
+                        <label for="">Phone Number</label>
+                        <input type="text" name="no" id="inputNo" [(ngModel)]="phone" class="form-control"
+                            placeholder="Mobile Number" required autofocus>
+                            <!-- <input type="text" name="name" id="name" [(ngModel)]="name" class="form-control"
+                            placeholder="Name" required autofocus> -->
+                        <p ciError>{{errorMessage}}</p>
+                    </div>
+                    <div class="row">&nbsp;</div>
+                    <div class="text-center">
+                        <button class="btn  btn-success " type="submit">Get OTP</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

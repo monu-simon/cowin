@@ -1,0 +1,50 @@
+<div class="card-header">India Total Vaccination Today: {{vaccinationCount | number}}</div><br>
+
+
+<div class="form-group">
+  <label>Select your State</label>
+  <select (change)="getState($event)" class="form-control">
+    <option disabled>State</option>
+    <option *ngFor="let state of states  " [value]="state.state_id">{{state.state_name}}</option>
+  </select><br>
+  <div *ngIf="districts">
+    <label>Select your District</label>
+    <select (change)="getDistrictCode($event)" class="form-control">
+      <option disabled selected >District</option>
+      <option *ngFor="let district of districts" [value]="district.district_id">{{district.district_name}}</option>
+    </select><br>
+  </div>
+  <div class="text-center">
+    <button (click)="getDistrict()" type="button" class="btn btn-success">Proceed</button>
+  </div><br>
+
+</div>
+<div class="row pt-5" *ngIf="statevacinatedData">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header text-center">State Total Vaccination Statistics</div>
+      <div class="card-body text-center">Total Vaccination Doses : {{statevacinatedData.total | number}}</div><br>
+      <div class="card-body text-center">Dose 1: {{statevacinatedData.tot_dose_1 | number}}</div><br>
+      <div class="card-body text-center">Dose 2: {{statevacinatedData.tot_dose_2 | number}}</div><br>
+      <div class="card-body text-center">Today vaccination Count: {{statevacinatedData.today | number}}</div><br>
+    </div>
+  </div>
+</div>
+
+<div class="text-center" *ngIf="showloader">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div class="row pt-5" *ngIf="flag">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header text-center">District Statistics</div>
+      <div class="card-body text-center">Total Vaccination Doses : {{vaccinatedData.total | number}}</div><br>
+      <div class="card-body text-center">Dose 1: {{vaccinatedData.tot_dose_1 | number}}</div><br>
+      <div class="card-body text-center">Dose 2: {{vaccinatedData.tot_dose_2 | number}}</div><br>
+      <div class="card-body text-center">Today vaccination Count: {{vaccinatedData.today | number}}</div><br>
+    </div>
+  </div>
+
+</div>
