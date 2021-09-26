@@ -1,31 +1,14 @@
-<!-- <div class="card-header">Total Cases around the Globe</div><br>
-<div class="form-group">
-    <label >Select Country</label>
-    <select (change)="getCountry($event)" class="form-control"   >
-        <option  disabled>Country</option>
-        <option  *ngFor="let country of countries" value={{country.Slug}}>{{country.Country}}</option>
-    </select><br>
-    <div class="text-center">
-    <button (click)="getCovidData()" type="button" class="btn btn-success">Show Data</button>
-    </div><br>
-    <div class="card" *ngIf="flag">
-        <div class="card-body">Total Confirmed Case: {{confirmed}}</div><br>
-        <div class="card-body">Total Recovered Cases:{{recovered}}</div><br>
-        <div class="card-body">Total Death Count:{{deaths}}</div><br>
-    </div>    
-
-</div> -->
-<h6 >Total cases around the Globe</h6>
+<div class="card-header">Total cases around the globe</div><br>
 <div class="row pt-5">
-    <div class="col-md-6 mx-auto" >
+    <div class="col-md-6 mx-auto">
         <div class="card rounded-0">
             <div class="card-header">
                 <h6 class="mb-0 text-center">Select Country</h6>
             </div>
             <div class="card-body text-center">
-                <select (change)="getCountry($event)" class="form-control"   >
-                    <option  disabled>Country</option>
-                    <option  *ngFor="let country of countries" value={{country.Slug}}>{{country.Country}}</option>
+                <select (change)="getCountry($event)" class="form-control">
+                    <option disabled>Country</option>
+                    <option *ngFor="let country of countries" value={{country.Slug}}>{{country.Country}}</option>
                 </select>
                 <div class="row">&nbsp;</div>
                 <div class="text-center">
@@ -36,11 +19,11 @@
     </div>
 </div>
 <div class="row pt-5" *ngIf="flag">
-    <div class="col-md-6 mx-auto" >
+    <div class="col-md-6 mx-auto">
         <div class="card rounded-0">
-            <div class="card-body text-center">Total Confirmed Case: {{confirmed}}</div><br>
-            <div class="card-body text-center">Total Recovered Cases:{{recovered}}</div><br>
-            <div class="card-body text-center">Total Death Count:{{deaths}}</div><br>
+            <div class="card-body text-center">Total Confirmed Case: {{confirmed | number}}</div><br>
+            <div class="card-body text-center">Total Recovered Cases:{{recovered | number}}</div><br>
+            <div class="card-body text-center">Total Death Count:{{deaths | number}}</div><br>
         </div>
     </div>
 </div>
