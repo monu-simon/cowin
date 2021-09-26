@@ -24,24 +24,24 @@
 <div class="card" *ngIf="vaccineDetails">
     <div class="text-center" *ngIf="showLoader">
         <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Center ID</th>  
+                <th>Center ID</th>
                 <th>Center Name</th>
                 <th>Address</th>
-                <th>Type</th>  
-                <th>Pincode</th>  
+                <th>Type</th>
+                <th>Pincode</th>
                 <th>Vaccine Name</th>
-                <th>Total Quantity</th> 
+                <th>Total Quantity</th>
                 <th>Dose 1 Quantity</th>
                 <th>Dose 2 Quantity</th>
             </tr>
         </thead>
-        
+
         <tbody>
             <tr *ngFor="let a of vaccineDetails">
                 <th>{{a.center_id}}</th>
@@ -56,5 +56,5 @@
             </tr>
         </tbody>
     </table>
-      
+
 </div>

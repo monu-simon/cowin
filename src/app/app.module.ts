@@ -18,6 +18,7 @@ import { ErrorDirective } from './ui/error.directive';
 import { DateService } from './shared/date';
 import { PincodeSearchComponent } from './ui/pincode-search/pincode-search.component';
 import { VaccinatedDateService } from './shared/vaccinatedDate';
+import { LoginappComponent } from './ui/loginapp/loginapp.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { VaccinatedDateService } from './shared/vaccinatedDate';
     OtpComponent,
     CertificateComponent,
     ErrorDirective,
-    PincodeSearchComponent
+    PincodeSearchComponent,
+    LoginappComponent
   ],
   imports: [
     BrowserModule,

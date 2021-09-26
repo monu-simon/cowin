@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.a = this.txnId.txnId;
         localStorage.setItem('txn', this.a)
         this.state.changeId(this.a)
-        this.route.navigate(['/otp', this.a])
+        this.route.navigate(['/otp'])
       },
       err => {
         let status: number = err.status

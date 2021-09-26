@@ -12,10 +12,10 @@ import { DateService } from 'src/app/shared/date';
 })
 export class VaccineDetailsComponent implements OnInit {
 
-  states!: States[]; 
-  districts!: Districts[]; 
+  states!: States[];
+  districts!: Districts[];
   logic: boolean = false;
-  statecode!: string; 
+  statecode!: string;
   districtcode!: string;
   formatDate: any
   vaccineDetails!: Vaccine[];
@@ -29,7 +29,6 @@ export class VaccineDetailsComponent implements OnInit {
     this.indiaCovidService.getStates().subscribe({
       next: states => {
         this.states = states.states
-        //this.t=this.states[<any>'states'];
       }
     }
     )
@@ -37,7 +36,6 @@ export class VaccineDetailsComponent implements OnInit {
   getDistrict() {
     this.indiaCovidService.getDistricts(this.statecode).subscribe({
       next: districts => {
-        console.log(districts)
         this.districts = districts.districts;
         this.logic = true;
 
