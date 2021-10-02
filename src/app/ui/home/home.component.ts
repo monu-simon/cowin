@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
-import { map, subscribeOn } from 'rxjs/operators';
+import { BehaviorSubject, from, of, Subject } from 'rxjs';
+import { map, subscribeOn, switchAll } from 'rxjs/operators';
 import { Districts } from 'src/app/model/districts.model';
 import { States } from 'src/app/model/states.model';
 import { Vaccinated } from 'src/app/model/vaccinated.model';
@@ -35,13 +35,32 @@ export class HomeComponent implements OnInit {
 
     const name = ['monu', 'sonu', 'adarsh'];
     const name$ = from(name);
+    const subject$=new Subject(); 
+    subject$.next("Subject 1")
+    subject$.subscribe(val=>{
+      console.log(val)
+
+    })
+    
+    subject$.next("Subject 2") 
+    subject$.complete(); 
+
+    const beh$=new BehaviorSubject("Beh Sub 1");
+    beh$.next("Beh Sub 3") 
+    beh$.subscribe((data)=>{
+      console.log(data)
+    })
+    beh$.next("Beh Sub 2")
     name$.pipe(
       // map((data)=>{ data})
       map((data) => {
-        data = data + 'test'
-        return data
-      })
+       // data = data + 'test'
+        return this.getTest(data)
+      }),switchAll()
     ).subscribe(data => {
+     // data.subscribe(data=>{
+       // console.log(data)
+      //})
       console.log(data)
     })
 
@@ -56,6 +75,10 @@ export class HomeComponent implements OnInit {
     }
     )
 
+  }
+  getTest(message:string){
+    //return message+"Test"
+    return of(message + 'Testttt')
   }
   getState(event: Event) {
     this.statecode = (event.target as HTMLInputElement).value;
