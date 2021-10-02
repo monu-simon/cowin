@@ -18,30 +18,24 @@ const routes: Routes = [
   },
   {
     path: 'bookk', component: VaccineDetailsComponent,
-    canActivate: [RouteGuardService]
   },
   {
     path: 'home', component: HomeComponent
   },
   {
     path: 'world', component: CasesCountryComponent,
-    canActivate: [RouteGuardService]
   },
   {
     path: 'login', component: LoginComponent,
-    canActivate: [RouteGuardService]
   },
   {
     path: 'otp', component: OtpComponent,
-    canActivate: [RouteGuardService]
   },
   {
     path: 'certificate', component: CertificateComponent,
-    canActivate: [RouteGuardService]
   },
   {
     path: 'pin', component: PincodeSearchComponent,
-    canActivate: [RouteGuardService]
   },
   {
     path: 'admin', component: LoginappComponent
