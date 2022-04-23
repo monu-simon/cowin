@@ -19,6 +19,7 @@ import { DateService } from './shared/date';
 import { PincodeSearchComponent } from './ui/pincode-search/pincode-search.component';
 import { VaccinatedDateService } from './shared/vaccinatedDate';
 import { LoginappComponent } from './ui/loginapp/loginapp.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { LoginappComponent } from './ui/loginapp/loginapp.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     StateService,
