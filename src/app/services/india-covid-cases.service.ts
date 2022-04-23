@@ -43,7 +43,7 @@ export class IndiaCovidCases {
         const url = "https://cdn-api.co-vin.in/api/v1/reports/getLiveVaccination";
         return this.http.get<any>(url)
     }
-    getStateWiseVaccinatedDetails(stateId: string, districtId: string, date: any): Observable<vaccinatedOut> {
+    getStateWiseVaccinatedDetails(stateId: string, districtId: string, date: any): Observable<any> {
 
         const url = "https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=" + stateId + "&district_id=" + districtId + "&date=" + date
         console.log(url)

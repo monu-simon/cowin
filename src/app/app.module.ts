@@ -24,6 +24,8 @@ import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatSliderModule} from '@angular/material/slider'
 import {MatIconModule} from '@angular/material/icon'
 import {MatButtonModule} from '@angular/material/button'
+import {MatCardModule} from '@angular/material/card';
+import { CardComponentComponent } from './shared/card-component/card-component/card-component.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import {MatButtonModule} from '@angular/material/button'
     CertificateComponent,
     ErrorDirective,
     PincodeSearchComponent,
-    LoginappComponent
+    LoginappComponent,
+    CardComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import {MatButtonModule} from '@angular/material/button'
     MatToolbarModule,
     MatSliderModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [
     StateService,

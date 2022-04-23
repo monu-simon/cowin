@@ -4,6 +4,7 @@ import { map, subscribeOn, switchAll } from 'rxjs/operators';
 import { Districts } from 'src/app/model/districts.model';
 import { States } from 'src/app/model/states.model';
 import { Vaccinated } from 'src/app/model/vaccinated.model';
+import { vaccineName } from 'src/app/model/vaccineName.model';
 import { IndiaCovidCases } from 'src/app/services/india-covid-cases.service';
 import { DateService } from 'src/app/shared/date';
 import { VaccinatedDateService } from 'src/app/shared/vaccinatedDate';
@@ -25,6 +26,11 @@ export class HomeComponent implements OnInit {
   statevacinatedData!: Vaccinated;
   flag: boolean = false
   showloader: boolean = false
+  todaysTitle!: string;
+  todaysSubTitle!: string;
+  covaxin!: string;
+  covisheild!: string
+  sputnik!: string;
 
   constructor(private indiaCovidService: IndiaCovidCases, private currentDatee: VaccinatedDateService) {
     this.currentDatee.setDate();
@@ -33,40 +39,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const name = ['monu', 'sonu', 'adarsh'];
-    const name$ = from(name);
-    const subject$=new Subject(); 
-    subject$.next("Subject 1")
-    subject$.subscribe(val=>{
-      console.log(val)
-
-    })
-    
-    subject$.next("Subject 2") 
-    subject$.complete(); 
-
-    const beh$=new BehaviorSubject("Beh Sub 1");
-    beh$.next("Beh Sub 3") 
-    beh$.subscribe((data)=>{
-      console.log(data)
-    })
-    beh$.next("Beh Sub 2")
-    name$.pipe(
-      // map((data)=>{ data})
-      map((data) => {
-       // data = data + 'test'
-        return this.getTest(data)
-      }),switchAll()
-    ).subscribe(data => {
-     // data.subscribe(data=>{
-       // console.log(data)
-      //})
-      console.log(data)
-    })
-
     this.indiaCovidService.getDailyVaccinationDetails().subscribe(data => {
-      this.vaccinationCount = data.count
+      this.todaysTitle='Vaccination Count',
+      this.todaysSubTitle = 'Vaccinations Administered Today'
+      this.vaccinationCount = data.count;
     })
+    this.indiaCovidService.getStateWiseVaccinatedDetails('','',this.formatDate).subscribe(
+      res => {
+        console.log(res.topBlock)
+        let vaccination:vaccineName = res.topBlock.vaccination;
+        this.covaxin = vaccination.covaxin;
+        this.covisheild = vaccination.covishield;
+        this.sputnik = vaccination.sputnik
+      }
+    )
 
     this.indiaCovidService.getStates().subscribe({
       next: states => {
@@ -76,10 +62,7 @@ export class HomeComponent implements OnInit {
     )
 
   }
-  getTest(message:string){
-    //return message+"Test"
-    return of(message + 'Testttt')
-  }
+
   getState(event: Event) {
     this.statecode = (event.target as HTMLInputElement).value;
     this.indiaCovidService.getStateWiseVaccinatedDetails(this.statecode, "", this.formatDate).subscribe(
