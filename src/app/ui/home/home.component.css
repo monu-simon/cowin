@@ -5,3 +5,12 @@
     display: flex;
     justify-content: space-around;
 }
+.center {
+    display: flex;
+    justify-content: center;
+}
+.details {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 50px;
+}

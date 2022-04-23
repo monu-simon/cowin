@@ -26,6 +26,8 @@ import {MatIconModule} from '@angular/material/icon'
 import {MatButtonModule} from '@angular/material/button'
 import {MatCardModule} from '@angular/material/card';
 import { CardComponentComponent } from './shared/card-component/card-component/card-component.component'
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { CardComponentComponent } from './shared/card-component/card-component/c
     MatSliderModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [
     StateService,
