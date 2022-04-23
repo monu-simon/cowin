@@ -1,12 +1,11 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
-    <a class="navbar-brand">Covid19 Portal</a>
-    <ul class="nav nav-pills">
-      <li><a class='nav-link' routerLink='/home' routerLinkActive="active">Home</a></li>
-      <li><a class='nav-link' routerLink='/bookk' routerLinkActive="active">Book Vaccine</a></li>
-      <li><a class='nav-link' routerLink='/world' routerLinkActive="active">Total Cases</a></li>
-      <li><a class='nav-link' routerLink='/pin'routerLinkActive="active" >Pincode Search</a></li>
-      <li><a class='nav-link' routerLink='/login'routerLinkActive="active" >Download Certificate</a></li>
-    </ul>
-    <label *ngIf="flag">Welcome Admin</label>
-  </nav>
-  
+<mat-toolbar color="primary">
+  <span><mat-icon>eco</mat-icon>Cowin Stat</span>
+  <div class="spacer">
+
+  </div>
+  <a mat-button routerLink='/home'>Home</a>
+  <a mat-button routerLink='/bookk'>Book</a>
+  <a mat-button routerLink='/world'>Cases</a>
+  <a mat-button routerLink='/pin'>Pincode Search</a>
+  <a mat-raised-button color="accent" routerLink='/login'>Sign In</a>
+</mat-toolbar>

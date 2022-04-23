@@ -20,6 +20,10 @@ import { PincodeSearchComponent } from './ui/pincode-search/pincode-search.compo
 import { VaccinatedDateService } from './shared/vaccinatedDate';
 import { LoginappComponent } from './ui/loginapp/loginapp.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatSliderModule} from '@angular/material/slider'
+import {MatIconModule} from '@angular/material/icon'
+import {MatButtonModule} from '@angular/material/button'
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSliderModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     StateService,
