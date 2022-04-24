@@ -18,12 +18,15 @@
         </div>
     </div>
 </div>
-<div class="row pt-5" *ngIf="flag">
-    <div class="col-md-6 mx-auto">
-        <div class="card rounded-0">
-            <div class="card-body text-center">Total Confirmed Case: {{confirmed | number}}</div><br>
-            <div class="card-body text-center">Total Recovered Cases:{{recovered | number}}</div><br>
-            <div class="card-body text-center">Total Death Count:{{deaths | number}}</div><br>
-        </div>
-    </div>
+<div class="row pt-5" *ngIf="flag" style="display: grid; justify-content: center;">
+    <mat-card class="example-card">
+        <mat-card-subtitle>Total Confirmed Case:</mat-card-subtitle>
+        <mat-card-content>
+            {{confirmed | number}}
+        </mat-card-content>
+        <mat-card-subtitle>Total Death Count:</mat-card-subtitle>
+        <mat-card-content>
+            {{deaths | number}}
+        </mat-card-content>
+    </mat-card>
 </div>
