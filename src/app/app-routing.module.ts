@@ -8,6 +8,7 @@ import { LoginComponent } from './ui/login/login.component';
 import { LoginappComponent } from './ui/loginapp/loginapp.component';
 import { OtpComponent } from './ui/otp/otp.component';
 import { PincodeSearchComponent } from './ui/pincode-search/pincode-search.component';
+import { SignupComponent } from './ui/signup/signup.component';
 import { VaccineDetailsComponent } from './ui/vaccine-details/vaccine-details.component';
 
 const routes: Routes = [
@@ -39,6 +40,9 @@ const routes: Routes = [
   },
   {
     path: 'admin', component: LoginappComponent
+  },
+  {
+    path: 'signup', component: SignupComponent
   }
 
 ];

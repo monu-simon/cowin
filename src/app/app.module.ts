@@ -10,7 +10,7 @@ import { CasesCountryComponent } from './ui/cases-country/cases-country.componen
 import { VaccineDetailsComponent } from './ui/vaccine-details/vaccine-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './ui/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OtpComponent } from './ui/otp/otp.component';
 import { StateService } from './services/stae.service';
 import { CertificateComponent } from './ui/certificate/certificate.component';
@@ -27,7 +27,9 @@ import {MatButtonModule} from '@angular/material/button'
 import {MatCardModule} from '@angular/material/card';
 import { CardComponentComponent } from './shared/card-component/card-component/card-component.component'
 import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { SignupComponent } from './ui/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import {MatSelectModule} from '@angular/material/select';
     ErrorDirective,
     PincodeSearchComponent,
     LoginappComponent,
-    CardComponentComponent
+    CardComponentComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [
     StateService,
