@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetOtpService } from 'src/app/services/get-otp.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'ci-header',
@@ -9,13 +10,18 @@ import { GetOtpService } from 'src/app/services/get-otp.service';
 export class HeaderComponent implements OnInit {
   welcome:string=""
   flag:boolean=false
-  constructor(private getOtpService:GetOtpService) { }
+  user: any;
+  constructor(private getOtpService:GetOtpService, private userService: UserService) { }
 
   ngOnInit(): void {
-    if(this.getOtpService.isLoggedIn()){
-      this.welcome="Welcome Admin"
-      this.flag=true
-    }
+    this.userService.getCurrentUser();
+   this.user = JSON.parse(localStorage.getItem('user')!); 
+   console.log(this.user)
+  }
+
+  signOut() {
+    console.log("reads")
+    this.userService.signOut();
   }
 
 }

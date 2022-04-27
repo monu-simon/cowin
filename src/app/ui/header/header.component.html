@@ -8,5 +8,9 @@
   <a mat-button routerLink='/world'>Cases</a>
   <a mat-button routerLink='/pin'>Pincode Search</a>
   <a mat-button  routerLink='/login'>Sign In</a>
-  <a mat-raised-button  routerLink='/signup'>Sign Up</a>
+  <a *ngIf="!user" mat-raised-button  routerLink='/signup'>Sign Up</a>
+  <a *ngIf="user" (click)="signOut()" mat-raised-button  routerLink='/signup'>Sign Out</a>
+  <div>
+    <p *ngIf="user"> Welcome {{user.displayName}}</p>
+  </div>
 </mat-toolbar> 

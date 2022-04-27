@@ -30,6 +30,13 @@ import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { SignupComponent } from './ui/signup/signup.component';
+import { UserHomeComponent } from './ui/user-home/user-home.component';
+import {AngularFireModule} from '@angular/fire/compat';
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/compat/auth'
+import { environment } from 'src/environments/environment.prod';
+
+
 
 @NgModule({
   declarations: [
@@ -46,7 +53,8 @@ import { SignupComponent } from './ui/signup/signup.component';
     PincodeSearchComponent,
     LoginappComponent,
     CardComponentComponent,
-    SignupComponent
+    SignupComponent,
+    UserHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +71,10 @@ import { SignupComponent } from './ui/signup/signup.component';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [
     StateService,
