@@ -22,7 +22,6 @@ export class AuthGuard implements CanActivate {
       this.userDetails = res;
       console.log(this.userDetails)
     });
-    console.log(this.userDetails)
     if(!isAuthenticated) {
       alert('You must be authenticated to view the page.')
     }

@@ -7,10 +7,12 @@
   <a mat-button routerLink='/bookk'>Book</a>
   <a mat-button routerLink='/world'>Cases</a>
   <a mat-button routerLink='/pin'>Pincode Search</a>
-  <a mat-button  routerLink='/login'>Sign In</a>
-  <a *ngIf="!user" mat-raised-button  routerLink='/signup'>Sign Up</a>
-  <a *ngIf="user" (click)="signOut()" mat-raised-button  routerLink='/signup'>Sign Out</a>
+  <a mat-button  routerLink='/login'>Download</a>
+  <a *ngIf="!(loginStatus$ | async) as loginStatus" mat-raised-button  routerLink='/signup'>Sign Up</a>
+  <a *ngIf="(loginStatus$ | async) as loginStatus" (click)="signOut()" mat-raised-button  routerLink='/signup'>
+    <mat-icon>exit_to_app</mat-icon>
+    Sign Out</a>
+    
   <div>
-    <p *ngIf="user"> Welcome {{user.displayName}}</p>
+    <p *ngIf="(username$ | async) as username"> {{username}}</p>
   </div>
-</mat-toolbar> 

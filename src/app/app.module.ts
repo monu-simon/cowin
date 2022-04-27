@@ -35,6 +35,8 @@ import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/compat/auth'
 import { environment } from 'src/environments/environment.prod';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 
 
@@ -74,7 +76,8 @@ import { environment } from 'src/environments/environment.prod';
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatMenuModule
   ],
   providers: [
     StateService,

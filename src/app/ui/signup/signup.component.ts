@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app'
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'ci-signup',
   templateUrl: './signup.component.html',
@@ -15,7 +16,7 @@ export class SignupComponent implements OnInit {
   });
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(public  afAuth: AngularFireAuth) { }
+  constructor(public  afAuth: AngularFireAuth,private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +27,7 @@ export class SignupComponent implements OnInit {
   signIn() {
     const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
     this.afAuth.signInWithPopup(googleAuthProvider);
+    this.userService.getCurrentUser();
   }
 
   signout() {

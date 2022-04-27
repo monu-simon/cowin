@@ -1,1 +1,4 @@
-<p>user-home works!</p>
+<h1 *ngIf="(username$ | async) as username" class="center"> Welcome {{username}}</h1>
+<div class="center">
+    <img src="{{user.photoURL}}"/>
+</div>
