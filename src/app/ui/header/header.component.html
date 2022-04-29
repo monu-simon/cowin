@@ -1,5 +1,7 @@
 <mat-toolbar color="primary">
-  <span><mat-icon>eco</mat-icon>Cowin Stat</span>
+  <span>
+    <mat-icon>eco</mat-icon>Cowin Stat
+  </span>
   <div class="spacer">
 
   </div>
@@ -7,12 +9,13 @@
   <a mat-button routerLink='/bookk'>Book</a>
   <a mat-button routerLink='/world'>Cases</a>
   <a mat-button routerLink='/pin'>Pincode Search</a>
-  <a mat-button  routerLink='/login'>Download</a>
-  <a *ngIf="!(loginStatus$ | async) as loginStatus" mat-raised-button  routerLink='/signup'>Sign Up</a>
-  <a *ngIf="(loginStatus$ | async) as loginStatus" (click)="signOut()" mat-raised-button  routerLink='/signup'>
+  <a mat-button routerLink='/login'>Download</a>
+  <a *ngIf="!(loginStatus$ | async) as loginStatus" mat-raised-button routerLink='/signup'>Sign Up</a>
+  <a *ngIf="(loginStatus$ | async) as loginStatus" (click)="signOut()" mat-raised-button routerLink='/signup'>
     <mat-icon>exit_to_app</mat-icon>
-    Sign Out</a>
-    
-  <div>
-    <p *ngIf="(username$ | async) as username"> {{username}}</p>
+    Sign Out
+  </a>
+
+  <div *ngIf="(username$ | async) as username">
+    <img src="{{user.photoURL}}" />
   </div>

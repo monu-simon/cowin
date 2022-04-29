@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { RouteGuardService } from './services/route-guard.service';
+import { AccessDeniedComponent } from './ui/access-denied/access-denied.component';
 import { CasesCountryComponent } from './ui/cases-country/cases-country.component';
 import { CertificateComponent } from './ui/certificate/certificate.component';
 import { HomeComponent } from './ui/home/home.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'world', component: CasesCountryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login', component: LoginComponent,
@@ -48,6 +50,10 @@ const routes: Routes = [
   }, 
   {
     path: 'userhome',component: UserHomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'access-denied', component: AccessDeniedComponent
   }
 
 ];

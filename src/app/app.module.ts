@@ -36,6 +36,7 @@ import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/compat/auth'
 import { environment } from 'src/environments/environment.prod';
 import {MatMenuModule} from '@angular/material/menu';
+import { AccessDeniedComponent } from './ui/access-denied/access-denied.component';
 
 
 
@@ -56,7 +57,8 @@ import {MatMenuModule} from '@angular/material/menu';
     LoginappComponent,
     CardComponentComponent,
     SignupComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,

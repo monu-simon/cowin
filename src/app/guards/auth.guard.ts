@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { User } from '../model/user.model';
+import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +11,19 @@ import { User } from '../model/user.model';
 export class AuthGuard implements CanActivate {
 
   userDetails!: any
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private router: Router, private userService: UserService) {
 
   }
   async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean | UrlTree> {
-    const user = await this.afAuth.currentUser;
-    const isAuthenticated = user? true: false;
-    this.afAuth.authState.subscribe(res => {
-      this.userDetails = res;
-      console.log(this.userDetails)
-    });
-    if(!isAuthenticated) {
-      alert('You must be authenticated to view the page.')
+    if(this.userService.getCurrentUserFullDetails()) {
+      console.log(this.userService.getCurrentUserFullDetails());
+      return true;
+    } else {console.log('Else')
+      this.router.navigate(['access-denied'])
+      return false
     }
-    return isAuthenticated;
   }
 
 }

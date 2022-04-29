@@ -17,9 +17,12 @@ export class UserService {
   getCurrentUser(): any {
     this.afAuth.authState.subscribe(res => {
       if (res) {
+        if(res) {
+          this.userDetails = res;
+        }
         this.router.navigate(['/userhome'])
         this.loginStatus.next(true)
-        this.userDetails = res;
+        //this.userDetails = res;
         localStorage.setItem('user', JSON.stringify(this.userDetails));
         this.userDetails = JSON.parse(localStorage.getItem('user')!);
         localStorage.setItem('name',this.userDetails.displayName);
@@ -29,13 +32,16 @@ export class UserService {
     })
     return this.userDetails
   }
-
+  getCurrentUserFullDetails() {
+    return this.userDetails;
+  }
   signOut() {
     this.afAuth.signOut();
     this.loginStatus.next(false);
     localStorage.setItem('user', 'null');
     localStorage.clear();
     this.userName.next('')
+    this.userDetails = null;
   }
 
   getIsLoggerIn() {
