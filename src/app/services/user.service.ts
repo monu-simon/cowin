@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { first } from 'rxjs/operators';
 
 
 @Injectable({
@@ -17,17 +16,10 @@ export class UserService {
   getCurrentUser(): any {
     this.afAuth.authState.subscribe(res => {
       if (res) {
-        if(res) {
-          this.userDetails = res;
-        }
+        this.userDetails = res;
         this.router.navigate(['/userhome'])
-        this.loginStatus.next(true)
-        //this.userDetails = res;
-        localStorage.setItem('user', JSON.stringify(this.userDetails));
-        this.userDetails = JSON.parse(localStorage.getItem('user')!);
-        localStorage.setItem('name',this.userDetails.displayName);
-        this.userName.next(localStorage.getItem('name')!);
-      } else {
+        this.loginStatus.next(true);
+        this.userName.next(this.userDetails.displayName);
       }
     })
     return this.userDetails
@@ -38,8 +30,6 @@ export class UserService {
   signOut() {
     this.afAuth.signOut();
     this.loginStatus.next(false);
-    localStorage.setItem('user', 'null');
-    localStorage.clear();
     this.userName.next('')
     this.userDetails = null;
   }

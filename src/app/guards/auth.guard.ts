@@ -18,9 +18,8 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean | UrlTree> {
     if(this.userService.getCurrentUserFullDetails()) {
-      console.log(this.userService.getCurrentUserFullDetails());
       return true;
-    } else {console.log('Else')
+    } else {
       this.router.navigate(['access-denied'])
       return false
     }

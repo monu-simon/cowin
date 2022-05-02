@@ -14,9 +14,8 @@ export class UserHomeComponent implements OnInit {
   username$ !: Observable<string>
 
   ngOnInit(): void {
-    this.user = JSON.parse(localStorage.getItem('user')!);
+    this.user = this.userService.getCurrentUserFullDetails();
     this.username$ = this.userService.getUserName();
-    console.log(this.user.photoURL)
   }
 
 }

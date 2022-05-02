@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.value.username)
+    
   }
   signIn() {
     const googleAuthProvider = new firebase.auth.GoogleAuthProvider();

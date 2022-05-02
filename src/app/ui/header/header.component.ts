@@ -17,15 +17,12 @@ export class HeaderComponent implements OnInit {
   constructor(private getOtpService:GetOtpService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getCurrentUser();
     this.loginStatus$ = this.userService.getIsLoggerIn();
     this.username$ = this.userService.getUserName();
-   this.user = JSON.parse(localStorage.getItem('user')!); 
-   console.log(this.user)
+   this.user = this.userService.getCurrentUserFullDetails();
   }
 
   signOut() {
-    console.log("reads")
     this.userService.signOut();
   }
 
