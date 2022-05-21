@@ -28,7 +28,6 @@ const routes: Routes = [
   },
   {
     path: 'world', component: CasesCountryComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'login', component: LoginComponent,

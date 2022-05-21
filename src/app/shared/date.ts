@@ -6,7 +6,6 @@ export class DateService {
     formatDate:any
     setDate() {
         this.date = new Date();
-        console.log(this.date)
         this.mm = this.date.getMonth() + 1;
         this.dd = this.date.getDate();
         this.yy = this.date.getFullYear();

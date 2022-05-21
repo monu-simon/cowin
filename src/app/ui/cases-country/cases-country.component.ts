@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CountryDetails } from 'src/app/model/country-details.model';
 import { Country } from 'src/app/model/country.model';
-import { CovidDataApi } from 'src/app/services/covid-data-api.service';
+import { WorldCovidDataApi } from 'src/app/services/world-covid-data-api.service';
 
 @Component({
   selector: 'ci-cases-country',
@@ -18,7 +17,7 @@ export class CasesCountryComponent implements OnInit {
   flag: boolean = false;
 
 
-  constructor(private dataService: CovidDataApi) { }
+  constructor(private dataService: WorldCovidDataApi) { }
 
   ngOnInit(): void {
     this.dataService.getCountries().subscribe((data) => {

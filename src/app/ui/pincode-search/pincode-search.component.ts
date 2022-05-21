@@ -13,18 +13,16 @@ export class PincodeSearchComponent implements OnInit {
 
   pin: any
   date: string = ""
-  flag: boolean = false
   showtableLogic: boolean = false
   showLoader: boolean = false;
   vaccineDetails: Vaccine[] | undefined
   constructor(private indiaService: IndiaCovidCases, private dateService: DateService) { }
 
   ngOnInit(): void {
-  }
-  onSubmit() {
     this.dateService.setDate();
     this.date = this.dateService.getDate();
-    this.flag = true
+  }
+  onSubmit() {
     this.showtableLogic = true
     this.showLoader = true
     this.indiaService.getByPincode(this.pin, this.date).subscribe({

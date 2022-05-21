@@ -10,7 +10,7 @@ import { Country } from "../model/country.model";
 @Injectable({
     providedIn: 'root'
 })
-export class CovidDataApi {
+export class WorldCovidDataApi {
     constructor(private http: HttpClient) {
 
     }
