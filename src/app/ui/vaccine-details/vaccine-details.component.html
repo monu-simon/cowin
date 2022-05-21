@@ -1,57 +1,59 @@
-<div class="card-header">Vaccine Availability</div><br>
-<div class="form-group">
-    <label>Select your State</label>
-    <select (change)="getState($event)" class="form-control">
-        <option disabled>State</option>
-        <option *ngFor="let state of states  " [value]="state.state_id">{{state.state_name}}</option>
-    </select><br>
-    <div *ngIf="logic">
-        <label>Select your District</label>
-        <select (change)="getDistrictCode($event)" class="form-control">
-            <option disabled selected>District</option>
-            <option *ngFor="let district of districts" [value]="district.district_id">{{district.district_name}}
-            </option>
+<div style="padding-top: 10px;">
+    <h1>Vaccince Availability</h1>
+    <div class="form-group">
+        <label>Select your State</label>
+        <select (change)="getState($event)" class="form-control">
+            <option disabled>State</option>
+            <option *ngFor="let state of states  " [value]="state.state_id">{{state.state_name}}</option>
         </select><br>
-    </div>
-    <div class="text-center">
-        <button (click)="getDistrict()" type="button" class="btn btn-success">Proceed</button>
-    </div><br>
-</div>
-
-<div class="card" *ngIf="showtableLogic">
-    <div class="text-center" *ngIf="showLoader">
-        <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+        <div *ngIf="logic">
+            <label>Select your District</label>
+            <select (change)="getDistrictCode($event)" class="form-control">
+                <option disabled selected>District</option>
+                <option *ngFor="let district of districts" [value]="district.district_id">{{district.district_name}}
+                </option>
+            </select><br>
         </div>
+        <div class="text-center">
+            <button (click)="getDistrict()" type="button" class="btn btn-success">Proceed</button>
+        </div><br>
     </div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Center ID</th>
-                <th>Center Name</th>
-                <th>Address</th>
-                <th>Type</th>
-                <th>Pincode</th>
-                <th>Vaccine Name</th>
-                <th>Total Quantity</th>
-                <th>Dose 1 Quantity</th>
-                <th>Dose 2 Quantity</th>
-            </tr>
-        </thead>
 
-        <tbody>
-            <tr *ngFor="let a of vaccineDetails">
-                <th>{{a.center_id}}</th>
-                <td>{{a.name}}</td>
-                <td>{{a.address}}</td>
-                <td>{{a.fee_type}}</td>
-                <td>{{a.pincode}}</td>
-                <td>{{a.vaccine}}</td>
-                <td>{{a.available_capacity}}</td>
-                <td>{{a.available_capacity_dose1}}</td>
-                <td>{{a.available_capacity_dose2}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card" *ngIf="showtableLogic">
+        <div class="text-center" *ngIf="showLoader">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Center ID</th>
+                    <th>Center Name</th>
+                    <th>Address</th>
+                    <th>Type</th>
+                    <th>Pincode</th>
+                    <th>Vaccine Name</th>
+                    <th>Total Quantity</th>
+                    <th>Dose 1 Quantity</th>
+                    <th>Dose 2 Quantity</th>
+                </tr>
+            </thead>
 
+            <tbody>
+                <tr *ngFor="let a of vaccineDetails">
+                    <th>{{a.center_id}}</th>
+                    <td>{{a.name}}</td>
+                    <td>{{a.address}}</td>
+                    <td>{{a.fee_type}}</td>
+                    <td>{{a.pincode}}</td>
+                    <td>{{a.vaccine}}</td>
+                    <td>{{a.available_capacity}}</td>
+                    <td>{{a.available_capacity_dose1}}</td>
+                    <td>{{a.available_capacity_dose2}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
 </div>

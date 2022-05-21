@@ -26,13 +26,17 @@ export class VaccineDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getStates();
+  }
+
+  getStates() {
     this.indiaCovidService.getStates().subscribe({
       next: states => {
         this.states = states.states
       }
-    }
-    )
+    })
   }
+
   getDistrict() {
     this.indiaCovidService.getDistricts(this.statecode).subscribe({
       next: districts => {
@@ -42,9 +46,11 @@ export class VaccineDetailsComponent implements OnInit {
       }
     })
   }
+
   getState(event: Event) {
     this.statecode = (event.target as HTMLInputElement).value;
   }
+  
   getDistrictCode(event: Event) {
     this.districtcode = (event.target as HTMLInputElement).value;
     this.currentDatee.setDate();

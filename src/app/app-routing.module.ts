@@ -21,7 +21,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'bookk', component: VaccineDetailsComponent,
+    path: 'book', component: VaccineDetailsComponent,
   },
   {
     path: 'home', component: HomeComponent
