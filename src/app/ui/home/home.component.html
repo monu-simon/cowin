@@ -15,7 +15,7 @@
       <div style="display: grid;">
         <mat-form-field appearance="fill">
           <mat-label>Select State</mat-label>
-          <mat-select [(ngModel)]="selectedValue" (selectionChange)="getState($event)" name="food">
+          <mat-select  (selectionChange)="getStateVaccinationStat($event)" name="food">
             <mat-option *ngFor="let state of states" [value]="state.state_id">
               {{state.state_name}}
             </mat-option>
@@ -25,7 +25,8 @@
       <div style="display: grid;">
         <mat-form-field appearance="fill" *ngIf="districts">
           <mat-label>Districts</mat-label>
-          <mat-select [(ngModel)]="selectedDistricts" (selectionChange)="getDistrictCode($event)" name="dist">
+          <mat-select  (selectionChange)="getDistrictVaccinationStat($event)"
+            name="dist">
             <mat-option *ngFor="let district of districts" [value]="district.district_id">
               {{district.district_name}}
             </mat-option>
@@ -42,56 +43,54 @@
   </div>
   <div class="details">
     <div>
-      <mat-card class="example-card" *ngIf="statevacinatedData">
+      <mat-card class="example-card" *ngIf="stateVaccinationStat">
         <mat-card-title>State Total Vaccination Statistics</mat-card-title>
         <mat-card-subtitle>Total Vaccination Doses</mat-card-subtitle>
         <mat-card-content>
-          {{statevacinatedData.total | number}}
+          {{stateVaccinationStat.total | number}}
         </mat-card-content>
         <mat-card-subtitle>Dose 1</mat-card-subtitle>
         <mat-card-content>
-          {{statevacinatedData.tot_dose_1 | number}}
+          {{stateVaccinationStat.tot_dose_1 | number}}
         </mat-card-content>
         <mat-card-subtitle>Dose 2</mat-card-subtitle>
         <mat-card-content>
-          {{statevacinatedData.tot_dose_2 | number}}
+          {{stateVaccinationStat.tot_dose_2 | number}}
         </mat-card-content>
         <mat-card-subtitle>Todays vaccination Count</mat-card-subtitle>
         <mat-card-content>
-          {{statevacinatedData.today | number}}
+          {{stateVaccinationStat.today | number}}
         </mat-card-content>
       </mat-card>
     </div>
     <div *ngIf="flag">
-      <mat-card class="example-card" *ngIf="statevacinatedData">
+      <mat-card class="example-card" *ngIf="districtVaccinationStat">
         <mat-card-title>District Total Vaccination Statistics</mat-card-title>
         <mat-card-subtitle>Total Vaccination Doses</mat-card-subtitle>
         <mat-card-content>
-          {{vaccinatedData.total | number}}
+          {{districtVaccinationStat.total | number}}
         </mat-card-content>
         <mat-card-subtitle>Dose 1</mat-card-subtitle>
         <mat-card-content>
-          {{vaccinatedData.tot_dose_1 | number}}
+          {{districtVaccinationStat.tot_dose_1 | number}}
         </mat-card-content>
         <mat-card-subtitle>Dose 2</mat-card-subtitle>
         <mat-card-content>
-          {{vaccinatedData.tot_dose_2 | number}}
+          {{districtVaccinationStat.tot_dose_2 | number}}
         </mat-card-content>
         <mat-card-subtitle>Todays vaccination Count</mat-card-subtitle>
         <mat-card-content>
-          {{vaccinatedData.today | number}}
+          {{districtVaccinationStat.today | number}}
         </mat-card-content>
       </mat-card>
     </div>
 
   </div>
-
-  
 
   <div class="text-center" *ngIf="showloader">
     <div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-  
+
 </div>

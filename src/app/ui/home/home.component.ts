@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
   districts!: Districts[];
   districtcode: string = ""
   formatDate: any
-  vaccinatedData!: Vaccinated;
-  statevacinatedData!: Vaccinated;
+  districtVaccinationStat!: Vaccinated;
+  stateVaccinationStat!: Vaccinated;
   flag: boolean = false
   showloader: boolean = false
   todaysTitle!: string;
@@ -28,8 +28,6 @@ export class HomeComponent implements OnInit {
   covaxin!: string;
   covisheild!: string
   sputnik!: string;
-  selectedValue!: string;
-  selectedDistricts!: string;
 
   constructor(private indiaCovidService: IndiaCovidCases, private currentDatee: VaccinatedDateService) {
     this.currentDatee.setDate();
@@ -38,13 +36,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getVaccinationInfo();
+    this.getVaccinationInfo('', '');
     this.getDailyTotalVaccinationCount();
     this.getStatesName();
 
   }
 
-  
+
   getDailyTotalVaccinationCount() {
     this.indiaCovidService.getDailyVaccinationCount().subscribe(data => {
       this.todaysTitle = 'Vaccination Count',
@@ -62,8 +60,8 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  getVaccinationInfo() {
-    this.indiaCovidService.getStateWiseVaccinatedDetails('', '', this.formatDate).subscribe(
+  getVaccinationInfo(stateCode: string, districtCode: string) {
+    this.indiaCovidService.getStateWiseVaccinatedDetails(stateCode, districtCode, this.formatDate).subscribe(
       res => {
         let vaccination: vaccineName = res.topBlock.vaccination;
         this.covaxin = vaccination.covaxin;
@@ -73,11 +71,11 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  getState(event: any) {
+  getStateVaccinationStat(event: any) {
     this.statecode = event.value;
     this.indiaCovidService.getStateWiseVaccinatedDetails(this.statecode, "", this.formatDate).subscribe(
       data => {
-        this.statevacinatedData = data.topBlock.vaccination
+        this.stateVaccinationStat = data.topBlock.vaccination
       }
     )
   }
@@ -89,17 +87,16 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  getDistrictCode(event: any) {
+  getDistrictVaccinationStat(event: any) {
     this.districtcode = event.value;
     this.flag = true
     this.showloader = true
     this.indiaCovidService.getStateWiseVaccinatedDetails(this.statecode, this.districtcode, this.formatDate).subscribe(
       data => {
-        this.vaccinatedData = data.topBlock.vaccination
+        this.districtVaccinationStat = data.topBlock.vaccination
         this.showloader = false
       }
     )
-
   }
 
 }
