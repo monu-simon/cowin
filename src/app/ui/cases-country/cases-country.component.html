@@ -1,32 +1,39 @@
-<div class="card-header">Total cases around the globe</div><br>
-<div class="row pt-5">
-    <div class="col-md-6 mx-auto">
-        <div class="card rounded-0">
-            <div class="card-header">
-                <h6 class="mb-0 text-center">Select Country</h6>
-            </div>
-            <div class="card-body text-center">
-                <select (change)="getCountry($event)" class="form-control">
-                    <option disabled>Country</option>
-                    <option *ngFor="let country of countries" value={{country.Slug}}>{{country.Country}}</option>
-                </select>
-                <div class="row">&nbsp;</div>
-                <div class="text-center">
-                    <button (click)="getCovidData()" type="button" class="btn btn-success">Show Data</button>
+<div style="padding-top: 10px;">
+    <h1>World Statistics</h1>
+    <div class="row pt-5">
+        <div class="col-md-6 mx-auto">
+            <div class="card rounded-0">
+                <div class="card-header">
+                    <h4 class="mb-1 text-center">Select Country</h4>
+                </div>
+                <div class="card-body text-center">
+                    <select (change)="getCountry($event)" class="form-control">
+                        <option disabled>Country</option>
+                        <option *ngFor="let country of countries" value={{country.Slug}}>{{country.Country}}</option>
+                    </select>
+                    <div class="row">&nbsp;</div>
+                    <div class="text-center">
+                        <button (click)="getCovidData()" type="button" class="btn btn-success">Show Data</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row pt-5" *ngIf="flag" style="display: grid; justify-content: center;">
-    <mat-card class="example-card">
-        <mat-card-subtitle>Total Confirmed Case:</mat-card-subtitle>
-        <mat-card-content>
-            {{confirmed | number}}
-        </mat-card-content>
-        <mat-card-subtitle>Total Death Count:</mat-card-subtitle>
-        <mat-card-content>
-            {{deaths | number}}
-        </mat-card-content>
-    </mat-card>
+    <div class="row pt-5" *ngIf="flag" style="display: grid; justify-content: center;">
+        <mat-card class="example-card">
+            <mat-card-subtitle>Total Confirmed Case:</mat-card-subtitle>
+            <mat-card-content>
+                {{confirmed | number}}
+            </mat-card-content>
+            <mat-card-subtitle>Total Death Count:</mat-card-subtitle>
+            <mat-card-content>
+                {{deaths | number}}
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="text-center" *ngIf="showLoader">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
 </div>

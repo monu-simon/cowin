@@ -15,6 +15,7 @@ export class CasesCountryComponent implements OnInit {
   deaths: string = "";
   confirmed: string = "";
   flag: boolean = false;
+  showLoader: boolean = false;
 
 
   constructor(private dataService: WorldCovidDataApi) { }
@@ -26,12 +27,14 @@ export class CasesCountryComponent implements OnInit {
   }
 
   getCovidData() {
+    this.showLoader = true;
     this.dataService.getCovidRealTime(this.country).subscribe((data) => {
       this.flag = true;
       var index = data.length - 1;
       this.confirmed = data[index].Confirmed;
       this.recovered = data[index].Recovered;
       this.deaths = data[index].Deaths;
+      this.showLoader = false;
     })
   }
 
