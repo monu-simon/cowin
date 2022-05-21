@@ -14,14 +14,13 @@ export class VaccineDetailsComponent implements OnInit {
 
   states!: States[];
   districts!: Districts[];
-  logic: boolean = false;
   statecode!: string;
   districtcode!: string;
   formatDate: any
   vaccineDetails!: Vaccine[];
   showtableLogic: boolean = false;
   showLoader: boolean = false;
-  constructor(private indiaCovidService: IndiaCovidCases, private currentDatee: DateService) {
+  constructor(private indiaCovidService: IndiaCovidCases, private currentDate: DateService) {
 
   }
 
@@ -41,20 +40,18 @@ export class VaccineDetailsComponent implements OnInit {
     this.indiaCovidService.getDistricts(this.statecode).subscribe({
       next: districts => {
         this.districts = districts.districts;
-        this.logic = true;
-
       }
     })
   }
 
-  getState(event: Event) {
+  getStateCode(event: Event) {
     this.statecode = (event.target as HTMLInputElement).value;
   }
   
   getDistrictCode(event: Event) {
     this.districtcode = (event.target as HTMLInputElement).value;
-    this.currentDatee.setDate();
-    this.formatDate = this.currentDatee.getDate();
+    this.currentDate.setDate();
+    this.formatDate = this.currentDate.getDate();
     this.showtableLogic = true;
     this.showLoader = true;
     this.indiaCovidService.getVaccineDetails(this.districtcode, this.formatDate).subscribe({

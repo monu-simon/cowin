@@ -2,11 +2,11 @@
     <h1>Vaccince Availability</h1>
     <div class="form-group">
         <label>Select your State</label>
-        <select (change)="getState($event)" class="form-control">
+        <select (change)="getStateCode($event)" class="form-control">
             <option disabled>State</option>
             <option *ngFor="let state of states  " [value]="state.state_id">{{state.state_name}}</option>
         </select><br>
-        <div *ngIf="logic">
+        <div *ngIf="districts">
             <label>Select your District</label>
             <select (change)="getDistrictCode($event)" class="form-control">
                 <option disabled selected>District</option>
