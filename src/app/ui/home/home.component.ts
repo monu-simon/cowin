@@ -38,11 +38,31 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.indiaCovidService.getDailyVaccinationDetails().subscribe(data => {
+    this.getVaccinationInfo();
+    this.getDailyTotalVaccinationCount();
+    this.getStatesName();
+
+  }
+
+  
+  getDailyTotalVaccinationCount() {
+    this.indiaCovidService.getDailyVaccinationCount().subscribe(data => {
       this.todaysTitle = 'Vaccination Count',
         this.todaysSubTitle = 'Vaccinations Administered Today'
       this.vaccinationCount = data.count;
     })
+  }
+
+  getStatesName() {
+    this.indiaCovidService.getStates().subscribe({
+      next: states => {
+        this.states = states.states
+      }
+    }
+    )
+  }
+
+  getVaccinationInfo() {
     this.indiaCovidService.getStateWiseVaccinatedDetails('', '', this.formatDate).subscribe(
       res => {
         let vaccination: vaccineName = res.topBlock.vaccination;
@@ -50,13 +70,6 @@ export class HomeComponent implements OnInit {
         this.covisheild = vaccination.covishield;
         this.sputnik = vaccination.sputnik
       }
-    )
-
-    this.indiaCovidService.getStates().subscribe({
-      next: states => {
-        this.states = states.states
-      }
-    }
     )
   }
 

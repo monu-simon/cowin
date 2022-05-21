@@ -39,7 +39,7 @@ export class IndiaCovidCases {
         return this.http.get<Out>(url)
 
     }
-    getDailyVaccinationDetails() {
+    getDailyVaccinationCount() {
         const url = "https://cdn-api.co-vin.in/api/v1/reports/getLiveVaccination";
         return this.http.get<any>(url)
     }
